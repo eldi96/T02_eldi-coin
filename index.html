@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOCK RUSH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="game">
+        <div class="background"></div>
+
+        <header class="top-bar">
+            <div class="logo">
+                <div class="logo-chart">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <h1>ELDI COIN</h1>
+                    <p>한 번의 선택이, 기록이 된다.</p>
+                </div>
+            </div>
+
+            <div class="top-actions">
+                <div class="best">
+                    <span class="best-icon">♛</span>
+
+                    <div>
+                        <small>BEST</small>
+                        <strong id="bestScore">10.00</strong>
+                    </div>
+                </div>
+
+                <button class="top-button" id="soundButton" type="button">🔊</button>
+                <button class="top-button" id="fullscreenButton" type="button">⛶</button>
+            </div>
+        </header>
+
+        <aside class="coin-panel glass-panel">
+            <div class="panel-title">보유 코인</div>
+
+            <div class="coin-value">
+                <div class="coin-icon">$</div>
+                <strong id="coins">10.00</strong>
+            </div>
+
+            <div id="growthRate" class="growth">+0%</div>
+
+            <div class="panel-line"></div>
+
+            <div class="stat">
+                <span>시작 코인</span>
+                <strong>10</strong>
+            </div>
+
+            <div class="stat">
+                <span>최고 기록</span>
+                <strong id="peak">10.00</strong>
+            </div>
+
+            <div class="stat">
+                <span>이번 판 최고</span>
+                <strong id="currentPeak">10.00</strong>
+            </div>
+        </aside>
+
+        <section class="center-area">
+            <div class="day-badge">
+                <strong id="dayTimer">DAY 1</strong>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-label">MARKET</div>
+                <canvas id="gameCanvas"></canvas>
+            </div>
+            <div class="cat-wrapper">
+              <img
+                src="assets/cat.png"
+                class="cat-overlay"
+                alt="">
+
+                <div class="cat-sweat" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <aside class="market-panel glass-panel">
+            <div class="panel-title">현재 상황</div>
+
+            <h2 id="marketState" class="market-state">▲ 상승세</h2>
+
+            <div id="marketMessage" class="market-message">
+                지금은 괜찮아...<br>
+                아직 기회가 있어!
+            </div>
+
+            <div class="risk">
+                <div class="risk-header">
+                    <span>위험도</span>
+                    <strong id="riskPercent">35%</strong>
+                </div>
+
+                <div id="riskBar" class="risk-bar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="leverage">
+                <div class="leverage-title">
+                    배율
+                    <small>(수익과 위험이 증가합니다)</small>
+                </div>
+
+                <div class="leverage-buttons">
+                    <button class="leverage-button active" data-leverage="x1" type="button">
+                        x1
+                    </button>
+
+                    <button class="leverage-button" data-leverage="x2" type="button">
+                        x2
+                    </button>
+
+                    <button class="leverage-button" data-leverage="x5" type="button">
+                        x5
+                    </button>
+
+                    <button class="leverage-button" data-leverage="x10" type="button">
+                        x10
+                    </button>
+                </div>
+
+                <div class="current-leverage">
+                    현재 선택:
+                    <strong id="currentLeverage">x1</strong>
+                </div>
+            </div>
+        </aside>
+
+        <section class="controls">
+            <button id="spaceButton" class="control-button hold" type="button">
+                <span class="control-icon">↗</span>
+
+                <span>
+                    <strong>HOLD</strong>
+                    <small>계속 진행하기</small>
+                </span>
+            </button>
+
+            <button id="stopButton" class="control-button cash" type="button">
+                <span class="control-icon">●</span>
+
+                <span>
+                    <strong>CASH OUT</strong>
+                    <small>지금 확정하기</small>
+                </span>
+            </button>
+        </section>
+
+        <section id="resultPanel" class="result-overlay hidden">
+            <div class="result-card">
+                <div class="result-icon">★</div>
+
+                <h2 id="resultTitle">TODAY'S RESULT</h2>
+
+                <p>최종 보유 코인</p>
+                <strong id="resultCoins">10.00 COIN</strong>
+
+                <p>최고 보유 코인</p>
+                <strong id="resultPeak">10.00 COIN</strong>
+
+                <p>진행 DAY</p>
+                <strong id="resultDay">0 DAY</strong>
+
+                <button id="restartButton" type="button">다시하기</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>
